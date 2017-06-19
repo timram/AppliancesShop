@@ -4,12 +4,15 @@ import java.util.HashMap;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import scenes.AbstractScene;
+import scenes.BaseScene;
+import shop.Shop;
 
 
 public class MainApp extends Application{
 	private Stage stage;
 	private HashMap<String, AbstractScene> scenes;
-	private Library library;
+	private Shop shop;
 	private BaseScene baseScene;
 	
 
@@ -21,9 +24,9 @@ public class MainApp extends Application{
 			stage.setHeight(500);
 			baseScene = new BaseScene(this);
 			stage.setScene(new Scene(baseScene));
-			initLibrary();
+			initShop();
 			initScenes();
-			setScene("authorization");
+			//setScene("authorization");
 			stage.show();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -37,15 +40,15 @@ public class MainApp extends Application{
 	
 	private void initScenes() {
 		scenes = new HashMap<String, AbstractScene>();
-		scenes.put("authorization", new AuthorizationScene(this));
+		/*scenes.put("authorization", new AuthorizationScene(this));
 		scenes.put("main", new MainScene(this));
 		scenes.put("profile", new ProfileScene(this));
 		scenes.put("viewBooks", new ViewBooksScene(this));
-		scenes.put("viewOrders", new ViewOrdersScene(this));
+		scenes.put("viewOrders", new ViewOrdersScene(this));*/
 	}
 	
-	private void initLibrary() {
-		library = new Library();
+	private void initShop() {
+		shop= new Shop();
 	}
 	
 	public void setScene(String name) {
@@ -57,8 +60,8 @@ public class MainApp extends Application{
 		stage.setTitle(title);
 	}
 	
-	public Library getLibrary() {
-		return library;
+	public Shop getShop() {
+		return shop;
 	}
 	
 	public BaseScene getBaseScene() {
