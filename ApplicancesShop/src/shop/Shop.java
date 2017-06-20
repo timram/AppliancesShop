@@ -16,7 +16,7 @@ public class Shop {
 		initProfiles();
 		initProducts();
 		initOrders();
-		
+		System.out.println(orders.getCloneOfSet());
 	}
 	
 	private void addProducts() {

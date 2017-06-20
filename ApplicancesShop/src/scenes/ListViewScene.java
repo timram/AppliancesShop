@@ -12,28 +12,22 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.ListView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
 
-public abstract class ListViewScene extends AbstractScene{
+public abstract class ListViewScene<T> extends VBox{
 	protected ListView<String> list;
 	protected ObservableList<String> mappingItems;
-	protected ArrayList<Object> orderedItems;
+	protected ArrayList<T> orderedItems;
 	@SuppressWarnings("rawtypes")
 	protected HashMap<String, ComboBox> options;
 	protected GridPane gridOptions;
+	protected MainApp app;
 	
 	public ListViewScene(MainApp app) {
-		super(app);
-		initListView();
+		this.app = app;
 		initGridOptions();
-	}
-	
-	private void initListView() {
-		list = new ListView<String>();
-		list.setPadding(new Insets(10, 10, 10, 10));
-		mappingItems = FXCollections.observableArrayList();
-		list.setItems(mappingItems);
-		orderedItems = new ArrayList<Object>();
-		this.setLeft(list);
+		initListView();
 	}
 	
 	protected void initGridOptions() {
@@ -41,14 +35,24 @@ public abstract class ListViewScene extends AbstractScene{
 		gridOptions.setPadding(new Insets(10, 10, 10, 10));
 		gridOptions.setHgap(10);
 		initOptions();
-		this.setTop(gridOptions);
+		this.getChildren().add(gridOptions);
+	}
+	
+	private void initListView() {
+		list = new ListView<String>();
+		list.setPadding(new Insets(10, 10, 10, 10));
+		list.setPrefWidth(200);
+		mappingItems = FXCollections.observableArrayList();
+		list.setItems(mappingItems);
+		orderedItems = new ArrayList<T>();
+		this.getChildren().add(list);
 	}
 	
 	public void setListMouseListener(EventHandler<? super MouseEvent> handler) {
 		list.setOnMouseClicked(handler);
 	} 
 	
-	public Object getSelectedItem() {
+	public T getSelectedItem() {
 		int index = list.getSelectionModel().getSelectedIndex();
 		if(index < 0) {
 			return null;

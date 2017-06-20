@@ -27,7 +27,8 @@ public abstract class SetOfItems<T> implements UpdateableSetOfItems<T> {
 		updateMaxItemId();
 	}
 	
-	protected void saveItems() {
+	@Override
+	public void saveItems() {
 		PrintWriter writer;
 		try {
 			writer = new PrintWriter(itemsFile);

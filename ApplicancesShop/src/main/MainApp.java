@@ -6,6 +6,8 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import scenes.AbstractScene;
 import scenes.BaseScene;
+import scenes.ViewOrdersScene;
+import scenes.ViewProductsScene;
 import shop.Shop;
 
 
@@ -26,7 +28,7 @@ public class MainApp extends Application{
 			stage.setScene(new Scene(baseScene));
 			initShop();
 			initScenes();
-			//setScene("authorization");
+			setScene("viewProducts");
 			stage.show();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -40,8 +42,9 @@ public class MainApp extends Application{
 	
 	private void initScenes() {
 		scenes = new HashMap<String, AbstractScene>();
-		/*scenes.put("authorization", new AuthorizationScene(this));
-		scenes.put("main", new MainScene(this));
+		scenes.put("viewProducts", new ViewProductsScene(this));
+		scenes.put("viewOrders", new ViewOrdersScene(this));
+		/*scenes.put("main", new MainScene(this));
 		scenes.put("profile", new ProfileScene(this));
 		scenes.put("viewBooks", new ViewBooksScene(this));
 		scenes.put("viewOrders", new ViewOrdersScene(this));*/

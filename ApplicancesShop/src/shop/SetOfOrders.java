@@ -73,10 +73,20 @@ public class SetOfOrders extends SetOfItems<ProductOrder>{
 		ArrayList<ProductOrder> filteredOrders = new ArrayList<ProductOrder>();
 		if(filters.containsKey(type)) {
 			for(ProductOrder order : items) {
-				if(filters.get(type).checkItem(order, value) && order.getUserId() == shop.getCurrentUser().getId()) {
+				if(filters.get(type).checkItem(order, value)) {
 					filteredOrders.add(order);
 				}
 			}
+		}
+		User user = shop.getCurrentUser();
+		if(user == null || !user.getType().equals("admin")) {
+			/*ArrayList<ProductOrder> ordersForUser = new ArrayList<ProductOrder>();
+			for(ProductOrder ord : filteredOrders) {
+				if(ord.getUserId() == shop.getCurrentUser().getId()) {
+					ordersForUser.add(ord);
+				}
+			}
+			return ordersForUser;*/
 		}
 		return filteredOrders;
 	}

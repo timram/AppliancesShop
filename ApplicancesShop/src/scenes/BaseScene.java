@@ -19,11 +19,11 @@ public class BaseScene extends AbstractScene{
 		initMenuItems();
 		MenuBar menuBar = new MenuBar();
 		
-		Menu profileMenu = new Menu("Profile");
-		profileMenu.getItems().addAll(menuItems.get("viewProfile"), menuItems.get("logOut"), menuItems.get("exit"));
+		Menu profileMenu = new Menu("Профиль");
+		profileMenu.getItems().addAll(menuItems.get("exit"));
 		
-		Menu viewMenu = new Menu("View");
-		viewMenu.getItems().addAll(menuItems.get("viewBooks"), menuItems.get("viewOrders"));
+		Menu viewMenu = new Menu("Просмотр");
+		viewMenu.getItems().addAll(menuItems.get("viewProducts"), menuItems.get("viewOrders"));
 		
 		menuBar.getMenus().addAll(profileMenu, viewMenu);
 		this.setTop(menuBar);
@@ -31,31 +31,31 @@ public class BaseScene extends AbstractScene{
 	
 	private void initMenuItems() {	
 		menuItems = new HashMap<String, MenuItem>();
-		menuItems.put("viewProfile", new MenuItem("View Profile"));
+		/*menuItems.put("viewProfile", new MenuItem("Войти в профиль"));
 		menuItems.get("viewProfile").setOnAction(event -> {
 			app.setScene("profile");
-		});
+		});*/
 		
-		menuItems.put("logOut", new MenuItem("Log Out"));
+		/*menuItems.put("logOut", new MenuItem("Выйти из профиля"));
 		menuItems.get("logOut").setOnAction(event -> {
-			if(showConfirmation("Do you really want to log out?")) {
+			if(showConfirmation("Вы действительно хотите выйти?")) {
 				app.setScene("authorization");
 			}
-		});
+		});*/
 		
-		menuItems.put("exit", new MenuItem("Exit"));
+		menuItems.put("exit", new MenuItem("Выход"));
 		menuItems.get("exit").setOnAction(event -> {
-			if(showConfirmation("Do you really want to leave?")) {
+			if(showConfirmation("Вы действительно хотите выйти?")) {
 				System.exit(0);
 			}
 		});
 		
-		menuItems.put("viewBooks", new MenuItem("View Books"));
-		menuItems.get("viewBooks").setOnAction(event -> {
-			app.setScene("viewBooks");
+		menuItems.put("viewProducts", new MenuItem("Просмотр товаров"));
+		menuItems.get("viewProducts").setOnAction(event -> {
+			app.setScene("viewProducts");
 		});
 		
-		menuItems.put("viewOrders", new MenuItem("View Orders"));
+		menuItems.put("viewOrders", new MenuItem("Просмотр заказов"));
 		menuItems.get("viewOrders").setOnAction(event -> {
 			app.setScene("viewOrders");
 		});

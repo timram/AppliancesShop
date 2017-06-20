@@ -11,4 +11,5 @@ public interface UpdateableSetOfItems<T> {
 	public void removeItem(int id);
 	public void addItem(HashMap<String, String> params);
 	public ArrayList<T> getCloneOfSet();
+	public void saveItems();
 }

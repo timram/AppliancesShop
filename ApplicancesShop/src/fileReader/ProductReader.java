@@ -74,7 +74,7 @@ public class ProductReader {
 		String vendor = readVendor();
 		int cost = readCost();
 		int quantity = readQuantity();
-		return new Product(title, type, vendor, cost, quantity, id);
+		return new Product(title, type, vendor, quantity, cost, id);
 	}
 	
 	public ArrayList<Product> readProducts() {
